@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joe Fuqua</title>
+  <meta name="description" content="Joe Fuqua — Enterprise AI Governance, writer of Algorithm & Blues, artist, author of The Unsigned Covenant. Charlotte, NC." />
+  <link rel="canonical" href="https://joefuqua.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --void: #080a0e;
+      --surface: #13171f;
+      --surface-hover: #1a1f2a;
+      --border: rgba(80,72,64,0.25);
+      --border-hover: rgba(80,72,64,0.45);
+      --ink: #e8e2d9;
+      --ink-mid: #a09890;
+      --ink-faint: #504840;
+      --ember: #c4622d;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--ink);
+      font-family: var(--font-display);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro {
+      margin-bottom: 4rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      color: var(--ink);
+    }
+
+    .lede {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 52ch;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      padding: 1.75rem 1.5rem;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      transition: background 0.25s;
+      position: relative;
+    }
+
+    .card:last-child { border-right: none; }
+
+    .card:hover { background: var(--surface-hover); }
+
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-url {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card-url span { color: var(--ember); }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    .footer-links .contact {
+      margin-left: auto;
+    }
+
+    @media (max-width: 680px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .card:last-child { border-bottom: none; }
+      .footer-links .contact { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="intro">
+      <p class="eyebrow">Charlotte, NC · Est. 1988</p>
+      <h1>Joe Fuqua</h1>
+      <p class="lede">Forty years watching humans panic about intelligent machines. Head of Enterprise AI Governance at Truist Financial. Writer. Artist. Still at it.</p>
+    </div>
+
+    <div class="cards">
+      <a class="card" href="https://joefuqua.blog" target="_blank" rel="noopener">
+        <p class="card-label">Writing</p>
+        <p class="card-url">joefuqua<span>.blog</span></p>
+        <p class="card-desc">Algorithm & Blues — weekly AI research translated into decisions executives can actually make.</p>
+        <p class="card-meta">Weekly · Every Sunday</p>
+      </a>
+      <a class="card" href="https://joefuqua.art" target="_blank" rel="noopener">
+        <p class="card-label">Art</p>
+        <p class="card-url">joefuqua<span>.art</span></p>
+        <p class="card-desc">Watercolor. Digital charcoal. AI-generated horror. Made by hand, by algorithm, and whatever lives between.</p>
+        <p class="card-meta">4 collections</p>
+      </a>
+      <a class="card" href="https://contemplations.ai" target="_blank" rel="noopener">
+        <p class="card-label">Fiction</p>
+        <p class="card-url">contemplations<span>.ai</span></p>
+        <p class="card-desc">The Unsigned Covenant — an experimental manuscript written from the perspective of an emerging AI consciousness.</p>
+        <p class="card-meta">Experimental literary fiction</p>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/joefuqua" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/jbfuqua" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://instagram.com/a.nod.tothe.odd" target="_blank" rel="noopener">@a.nod.tothe.odd</a>
+      <a href="https://instagram.com/the.dim.edge" target="_blank" rel="noopener">@the.dim.edge</a>
+      <a href="mailto:joe.b.fuqua@gmail.com" class="contact">Contact</a>
+    </div>
+
+  </div>
+</body>
+</html>

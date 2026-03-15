@@ -1,0 +1,11 @@
+{
+  "name": "joefuqua-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static personal site for joefuqua.com",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "clean": "node scripts/build.mjs --clean",
+    "start": "node scripts/serve.mjs"
+  }
+}
