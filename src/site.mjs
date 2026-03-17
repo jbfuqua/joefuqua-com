@@ -1,11 +1,29 @@
-<!DOCTYPE html>
+const socialLinks = [
+  { href: "https://linkedin.com/in/joefuqua", label: "LinkedIn" },
+  { href: "https://instagram.com/a.nod.tothe.odd", label: "Instagram" }
+];
+
+const ecosystemLinks = [
+  { href: "https://joefuqua.com", label: "Home", key: "home" },
+  { href: "https://joefuqua.blog", label: "Writing", key: "writing" },
+  { href: "https://joefuqua.art", label: "Art", key: "art" },
+  { href: "/about", label: "About", key: "about" },
+  {
+    href: "https://joefuqua.blog",
+    label: "Subscribe",
+    key: "subscribe",
+    note: "Newsletter signup lives on joefuqua.blog"
+  }
+];
+
+const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", content }) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joe Fuqua</title>
-  <meta name="description" content="Joe Fuqua — Enterprise AI Governance, writer of Algorithm & Blues, artist, author of The Unsigned Covenant. Charlotte, NC." />
-  <link rel="canonical" href="https://joefuqua.com" />
+  <title>${title}</title>
+  <meta name="description" content="${description}" />
+  <link rel="canonical" href="${canonical}" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -360,17 +378,48 @@
     }
   </style>
 </head>
-<body class="">
+<body class="${bodyClass}">
   <div class="shell">
     <header class="site-nav">
       <a class="site-brand" href="https://joefuqua.com">Joe Fuqua</a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="https://joefuqua.com" target="_blank" rel="noopener" aria-current="page">Home</a><a href="https://joefuqua.blog" target="_blank" rel="noopener">Writing</a><a href="https://joefuqua.art" target="_blank" rel="noopener">Art</a><a href="/about">About</a><a href="https://joefuqua.blog" target="_blank" rel="noopener" title="Newsletter signup lives on joefuqua.blog">Subscribe</a>
+        ${ecosystemLinks.map((link) => {
+          const attrs = [
+            `href="${link.href}"`,
+            link.href.startsWith("https://") ? 'target="_blank" rel="noopener"' : "",
+            link.key === activeKey ? 'aria-current="page"' : "",
+            link.note ? `title="${link.note}"` : ""
+          ].filter(Boolean).join(" ");
+
+          return `<a ${attrs}>${link.label}</a>`;
+        }).join("")}
       </nav>
     </header>
 
     <main>
-      
+      ${content}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-title">
+        <strong>Joe Fuqua</strong>
+        <span>Writing • Art • Essays on AI</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://joefuqua.com" target="_blank" rel="noopener">joefuqua.com</a>
+        <a href="https://joefuqua.blog" target="_blank" rel="noopener">joefuqua.blog</a>
+        <a href="https://joefuqua.art" target="_blank" rel="noopener">joefuqua.art</a>
+      </div>
+      <div class="social-links">
+        ${socialLinks.map((link) => `<a href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join("")}
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+`;
+
+const homeContent = `
   <section class="panel intro">
     <p class="eyebrow">Charlotte, NC · Est. 1988</p>
     <h1>Joe Fuqua</h1>
@@ -401,23 +450,55 @@
       <p class="card-meta">Experimental literary fiction</p>
     </a>
   </section>
+`;
 
-    </main>
+const aboutContent = `
+  <section class="panel">
+    <p class="eyebrow">About</p>
+    <h1>Writing, art, and a long view of intelligent machines.</h1>
+    <p class="lede">Joe Fuqua is an enterprise AI governance leader based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
+  </section>
 
-    <footer class="site-footer">
-      <div class="footer-title">
-        <strong>Joe Fuqua</strong>
-        <span>Writing • Art • Essays on AI</span>
-      </div>
-      <div class="footer-links">
-        <a href="https://joefuqua.com" target="_blank" rel="noopener">joefuqua.com</a>
-        <a href="https://joefuqua.blog" target="_blank" rel="noopener">joefuqua.blog</a>
-        <a href="https://joefuqua.art" target="_blank" rel="noopener">joefuqua.art</a>
-      </div>
-      <div class="social-links">
-        <a href="https://linkedin.com/in/joefuqua" target="_blank" rel="noopener">LinkedIn</a><a href="https://instagram.com/a.nod.tothe.odd" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+  <section class="about-grid">
+    <article class="panel">
+      <h2>Work</h2>
+      <p>By day, Joe leads enterprise AI governance at Truist Financial. The throughline is practical judgment: how systems get adopted, how institutions stay accountable, and how people make decisions when the machinery gets strange.</p>
+    </article>
+    <article class="panel">
+      <h2>Practice</h2>
+      <p>The writing ranges from essays on AI to the newsletter Algorithm &amp; Blues. The art ranges from watercolor to digital charcoal to synthetic horror. Different mediums, same preoccupation: what technology reveals about being human.</p>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Where to start</h2>
+    <p>If you want the ideas, start with the writing. If you want the visual work, head to the art site. If you want the occasional newsletter, the current subscribe path lives on joefuqua.blog.</p>
+    <div class="hero-actions">
+      <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Go to Writing</a>
+      <a class="button-link secondary" href="https://joefuqua.art" target="_blank" rel="noopener">Go to Art</a>
+    </div>
+    <p class="note">No separate newsletter route exists in this repo today; subscribe currently resolves to the writing site.</p>
+  </section>
+`;
+
+export const pages = [
+  {
+    route: "index.html",
+    title: "Joe Fuqua",
+    description: "Joe Fuqua — Enterprise AI Governance, writer of Algorithm & Blues, artist, author of The Unsigned Covenant. Charlotte, NC.",
+    canonical: "https://joefuqua.com",
+    activeKey: "home",
+    content: homeContent
+  },
+  {
+    route: "about/index.html",
+    title: "About | Joe Fuqua",
+    description: "About Joe Fuqua — enterprise AI governance, writing, art, and the ecosystem behind joefuqua.com.",
+    canonical: "https://joefuqua.com/about",
+    activeKey: "about",
+    content: aboutContent
+  }
+].map((page) => ({
+  ...page,
+  html: pageShell(page)
+}));
