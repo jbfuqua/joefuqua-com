@@ -191,6 +191,10 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       margin-top: 2rem;
     }
 
+    .hero-actions .button-link {
+      flex: 0 1 12rem;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -228,6 +232,45 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
     .button-link.primary:focus-visible {
       background: #f0ebe3;
       color: var(--void);
+    }
+
+    .hub-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .hub-link {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.35rem;
+      background: rgba(19, 23, 31, 0.55);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .hub-link:hover,
+    .hub-link:focus-visible {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+      outline: none;
+    }
+
+    .hub-link .card-label {
+      margin-bottom: 0.55rem;
+    }
+
+    .hub-link-title {
+      display: block;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      color: var(--ink);
+      margin-bottom: 0.45rem;
+    }
+
+    .hub-link-copy {
+      font-size: 0.92rem;
+      line-height: 1.7;
     }
 
     .cards {
@@ -360,10 +403,24 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 
       .nav-links {
         justify-content: flex-start;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links a { text-align: center; }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .button-link {
+        width: 100%;
       }
 
       .cards,
-      .about-grid {
+      .about-grid,
+      .hub-links {
         grid-template-columns: 1fr;
       }
 
@@ -428,6 +485,19 @@ const homeContent = `
       <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Visit Writing</a>
       <a class="button-link secondary" href="https://joefuqua.art" target="_blank" rel="noopener">Visit Art</a>
     </div>
+  </section>
+
+  <section class="hub-links" aria-label="Primary destinations">
+    <a class="hub-link" href="https://joefuqua.blog" target="_blank" rel="noopener">
+      <p class="card-label">Writing</p>
+      <span class="hub-link-title">joefuqua.blog</span>
+      <p class="hub-link-copy">Essays, Algorithm &amp; Blues, and practical writing about AI for people who still have to make decisions.</p>
+    </a>
+    <a class="hub-link" href="https://joefuqua.art" target="_blank" rel="noopener">
+      <p class="card-label">Art</p>
+      <span class="hub-link-title">joefuqua.art</span>
+      <p class="hub-link-copy">Watercolor, digital charcoal, and synthetic horror. Visual work made by hand, by algorithm, and between the two.</p>
+    </a>
   </section>
 
   <section class="cards" aria-label="Ecosystem destinations">
