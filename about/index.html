@@ -173,10 +173,6 @@
       margin-top: 2rem;
     }
 
-    .hero-actions .button-link {
-      flex: 0 1 12rem;
-    }
-
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -214,45 +210,6 @@
     .button-link.primary:focus-visible {
       background: #f0ebe3;
       color: var(--void);
-    }
-
-    .hub-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .hub-link {
-      display: block;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.4rem 1.35rem;
-      background: rgba(19, 23, 31, 0.55);
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .hub-link:hover,
-    .hub-link:focus-visible {
-      background: var(--surface-hover);
-      border-color: var(--border-hover);
-      outline: none;
-    }
-
-    .hub-link .card-label {
-      margin-bottom: 0.55rem;
-    }
-
-    .hub-link-title {
-      display: block;
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      color: var(--ink);
-      margin-bottom: 0.45rem;
-    }
-
-    .hub-link-copy {
-      font-size: 0.92rem;
-      line-height: 1.7;
     }
 
     .cards {
@@ -396,13 +353,12 @@
         flex-direction: column;
       }
 
-      .hero-actions .button-link {
+      .button-link {
         width: 100%;
       }
 
       .cards,
-      .about-grid,
-      .hub-links {
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
