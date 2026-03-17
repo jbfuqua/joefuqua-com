@@ -30,7 +30,7 @@ export async function buildSite({ cleanOnly = false } = {}) {
   console.log(`Built ${pages.length} pages to root and dist/`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
   const cleanOnly = process.argv.includes("--clean");
   await buildSite({ cleanOnly });
 }

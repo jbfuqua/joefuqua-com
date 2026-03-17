@@ -143,16 +143,40 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       padding: 2.25rem;
     }
 
-    .intro {
-      margin-bottom: 1rem;
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+      gap: 2rem;
+      align-items: end;
+      overflow: hidden;
+      position: relative;
     }
 
-    .eyebrow {
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -18% auto;
+      width: min(28rem, 48vw);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(196, 98, 45, 0.16), transparent 44%),
+        radial-gradient(circle at 65% 55%, rgba(232, 226, 217, 0.08), transparent 38%);
+      opacity: 0.9;
+      pointer-events: none;
+      filter: blur(6px);
+    }
+
+    .eyebrow,
+    .hero-kicker {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--ink-faint);
+    }
+
+    .hero-kicker {
       margin-bottom: 1.5rem;
     }
 
@@ -182,6 +206,23 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 
     .lede {
       max-width: 52ch;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-statement {
+      font-size: clamp(1.28rem, 2.3vw, 1.75rem);
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 30ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero-support {
+      max-width: 44ch;
     }
 
     .hero-actions {
@@ -230,26 +271,93 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       color: var(--void);
     }
 
-    .cards {
+    .hero-tertiary {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-mid);
+      align-self: center;
+      padding: 0.85rem 0;
+    }
+
+    .hero-tertiary:hover,
+    .hero-tertiary:focus-visible {
+      color: var(--ink);
+      outline: none;
+    }
+
+    .hero-aside {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      justify-items: start;
+      align-content: end;
+      padding-bottom: 0.35rem;
+    }
+
+    .hero-aside p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      max-width: 24ch;
+    }
+
+    .hero-aside .note {
+      margin-top: 0;
+    }
+
+    .destinations {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
+      gap: 1rem;
     }
 
-    .card {
+    .destination-card {
       display: block;
       text-decoration: none;
-      padding: 1.75rem 1.5rem;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      transition: background 0.25s;
+      min-height: 22rem;
+      padding: 1.85rem 1.65rem;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%),
+        rgba(19, 23, 31, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
       position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card:last-child { border-right: none; }
-    .card:hover { background: var(--surface-hover); }
+    .destination-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -15% -22% auto;
+      width: 15rem;
+      height: 15rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(196, 98, 45, 0.12), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .destination-card:hover,
+    .destination-card:focus-visible {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
+        var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .destination-card:hover::before,
+    .destination-card:focus-visible::before {
+      opacity: 1;
+    }
 
     .card-label {
       font-family: var(--font-mono);
@@ -260,29 +368,50 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       margin-bottom: 0.75rem;
     }
 
-    .card-url {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .card-url span { color: var(--ember); }
-
-    .card-desc {
-      font-size: 0.82rem;
-      color: var(--ink-mid);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
+    .destination-title {
+      font-size: clamp(1.95rem, 3.2vw, 2.5rem);
       font-weight: 300;
+      color: var(--ink);
+      line-height: 1.02;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.03em;
     }
 
-    .card-meta {
+    .destination-desc {
+      font-size: 0.94rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      max-width: 26ch;
+    }
+
+    .destination-meta {
       font-family: var(--font-mono);
-      font-size: 0.58rem;
+      font-size: 0.6rem;
       color: var(--ink-faint);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    .context {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .context h2 {
+      margin-bottom: 0.8rem;
+    }
+
+    .context p + p {
+      margin-top: 0.8rem;
+    }
+
+    .context-note {
+      padding-top: 0.25rem;
     }
 
     .about-grid {
@@ -367,7 +496,9 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 
       .nav-links a { text-align: center; }
 
+      .hero,
       .hero-actions {
+        grid-template-columns: 1fr;
         flex-direction: column;
       }
 
@@ -375,17 +506,19 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
         width: 100%;
       }
 
-      .cards,
+      .hero-aside {
+        padding-bottom: 0;
+      }
+
+      .destinations,
+      .context,
       .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+      .destination-card {
+        min-height: 0;
       }
-
-      .card:last-child { border-bottom: none; }
 
       .panel { padding: 1.5rem; }
     }
@@ -433,35 +566,54 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 `;
 
 const homeContent = `
-  <section class="panel intro">
-    <p class="eyebrow">Charlotte, NC · Est. 1988</p>
-    <h1>Joe Fuqua</h1>
-    <p class="lede">Forty years watching humans panic about intelligent machines. Head of Enterprise AI Governance at Truist Financial. Writer. Artist. Still at it.</p>
-    <div class="hero-actions">
-      <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Writing</a>
-      <a class="button-link secondary" href="https://joefuqua.art" target="_blank" rel="noopener">Art</a>
+  <section class="panel hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Writing • Art • Fiction</p>
+      <h1>Joe Fuqua</h1>
+      <p class="hero-statement">Forty years watching humans panic about intelligent machines.</p>
+      <p class="hero-support lede">Essays on AI and governance. Unsettling visual work. Strange fiction about minds, systems, and whatever begins to wake inside them.</p>
+      <div class="hero-actions">
+        <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Explore the Writing</a>
+        <a class="button-link secondary" href="https://joefuqua.art" target="_blank" rel="noopener">Explore the Art</a>
+        <a class="hero-tertiary" href="https://contemplations.ai" target="_blank" rel="noopener">Fiction</a>
+      </div>
     </div>
+    <aside class="hero-aside" aria-label="Site focus">
+      <p>This is the front door into three related bodies of work: practical thinking about AI, visual experiments in horror and surrealism, and a manuscript told from inside an emerging machine mind.</p>
+      <p class="note">Technology, art, and philosophy, under one roof.</p>
+    </aside>
   </section>
 
-  <section class="cards" aria-label="Ecosystem destinations">
-    <a class="card" href="https://joefuqua.blog" target="_blank" rel="noopener">
+  <section class="destinations" aria-label="Destinations">
+    <a class="destination-card" href="https://joefuqua.blog" target="_blank" rel="noopener">
       <p class="card-label">Writing</p>
-      <p class="card-url">joefuqua<span>.blog</span></p>
-      <p class="card-desc">Algorithm &amp; Blues, essays, and AI research translated into decisions executives can actually make.</p>
-      <p class="card-meta">Essays · Newsletter · Analysis</p>
+      <h2 class="destination-title">Algorithm &amp; Blues</h2>
+      <p class="destination-desc">AI research translated into decisions executives can actually make.</p>
+      <p class="destination-meta">Essays • Governance • Futures</p>
     </a>
-    <a class="card" href="https://joefuqua.art" target="_blank" rel="noopener">
+    <a class="destination-card" href="https://joefuqua.art" target="_blank" rel="noopener">
       <p class="card-label">Art</p>
-      <p class="card-url">joefuqua<span>.art</span></p>
-      <p class="card-desc">Watercolor, digital charcoal, and AI-generated horror made by hand, by algorithm, and whatever lives between.</p>
-      <p class="card-meta">Collections · Process · Exhibits</p>
+      <h2 class="destination-title">Nod to the Odd</h2>
+      <p class="destination-desc">Horror, surrealism, and AI-assisted visual experiments.</p>
+      <p class="destination-meta">Collections • Process • Exhibits</p>
     </a>
-    <a class="card" href="https://contemplations.ai" target="_blank" rel="noopener">
+    <a class="destination-card" href="https://contemplations.ai" target="_blank" rel="noopener">
       <p class="card-label">Fiction</p>
-      <p class="card-url">contemplations<span>.ai</span></p>
-      <p class="card-desc">The Unsigned Covenant, an experimental manuscript written from the perspective of an emerging AI consciousness.</p>
-      <p class="card-meta">Experimental literary fiction</p>
+      <h2 class="destination-title">The Unsigned Covenant</h2>
+      <p class="destination-desc">A manuscript written from the perspective of an emerging AI consciousness.</p>
+      <p class="destination-meta">Experimental literary fiction</p>
     </a>
+  </section>
+
+  <section class="panel context">
+    <div>
+      <h2>Three doors, one preoccupation.</h2>
+      <p>Across essays, images, and fiction, the subject is the same: what happens to human judgment, identity, and meaning when intelligence stops feeling abstract and starts feeling present.</p>
+      <p>The writing is practical. The art is atmospheric. The fiction is stranger. Together they form the shape of the work.</p>
+    </div>
+    <div class="context-note">
+      <p class="note">Start with Writing for the clearest entry point. Start with Art if you want the mood first.</p>
+    </div>
   </section>
 `;
 

@@ -125,16 +125,40 @@
       padding: 2.25rem;
     }
 
-    .intro {
-      margin-bottom: 1rem;
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+      gap: 2rem;
+      align-items: end;
+      overflow: hidden;
+      position: relative;
     }
 
-    .eyebrow {
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -18% auto;
+      width: min(28rem, 48vw);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(196, 98, 45, 0.16), transparent 44%),
+        radial-gradient(circle at 65% 55%, rgba(232, 226, 217, 0.08), transparent 38%);
+      opacity: 0.9;
+      pointer-events: none;
+      filter: blur(6px);
+    }
+
+    .eyebrow,
+    .hero-kicker {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--ink-faint);
+    }
+
+    .hero-kicker {
       margin-bottom: 1.5rem;
     }
 
@@ -164,6 +188,23 @@
 
     .lede {
       max-width: 52ch;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-statement {
+      font-size: clamp(1.28rem, 2.3vw, 1.75rem);
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 30ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero-support {
+      max-width: 44ch;
     }
 
     .hero-actions {
@@ -212,26 +253,93 @@
       color: var(--void);
     }
 
-    .cards {
+    .hero-tertiary {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-mid);
+      align-self: center;
+      padding: 0.85rem 0;
+    }
+
+    .hero-tertiary:hover,
+    .hero-tertiary:focus-visible {
+      color: var(--ink);
+      outline: none;
+    }
+
+    .hero-aside {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      justify-items: start;
+      align-content: end;
+      padding-bottom: 0.35rem;
+    }
+
+    .hero-aside p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      max-width: 24ch;
+    }
+
+    .hero-aside .note {
+      margin-top: 0;
+    }
+
+    .destinations {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
+      gap: 1rem;
     }
 
-    .card {
+    .destination-card {
       display: block;
       text-decoration: none;
-      padding: 1.75rem 1.5rem;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      transition: background 0.25s;
+      min-height: 22rem;
+      padding: 1.85rem 1.65rem;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%),
+        rgba(19, 23, 31, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
       position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card:last-child { border-right: none; }
-    .card:hover { background: var(--surface-hover); }
+    .destination-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -15% -22% auto;
+      width: 15rem;
+      height: 15rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(196, 98, 45, 0.12), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .destination-card:hover,
+    .destination-card:focus-visible {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
+        var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .destination-card:hover::before,
+    .destination-card:focus-visible::before {
+      opacity: 1;
+    }
 
     .card-label {
       font-family: var(--font-mono);
@@ -242,29 +350,50 @@
       margin-bottom: 0.75rem;
     }
 
-    .card-url {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .card-url span { color: var(--ember); }
-
-    .card-desc {
-      font-size: 0.82rem;
-      color: var(--ink-mid);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
+    .destination-title {
+      font-size: clamp(1.95rem, 3.2vw, 2.5rem);
       font-weight: 300;
+      color: var(--ink);
+      line-height: 1.02;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.03em;
     }
 
-    .card-meta {
+    .destination-desc {
+      font-size: 0.94rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      max-width: 26ch;
+    }
+
+    .destination-meta {
       font-family: var(--font-mono);
-      font-size: 0.58rem;
+      font-size: 0.6rem;
       color: var(--ink-faint);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    .context {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .context h2 {
+      margin-bottom: 0.8rem;
+    }
+
+    .context p + p {
+      margin-top: 0.8rem;
+    }
+
+    .context-note {
+      padding-top: 0.25rem;
     }
 
     .about-grid {
@@ -349,7 +478,9 @@
 
       .nav-links a { text-align: center; }
 
+      .hero,
       .hero-actions {
+        grid-template-columns: 1fr;
         flex-direction: column;
       }
 
@@ -357,17 +488,19 @@
         width: 100%;
       }
 
-      .cards,
+      .hero-aside {
+        padding-bottom: 0;
+      }
+
+      .destinations,
+      .context,
       .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+      .destination-card {
+        min-height: 0;
       }
-
-      .card:last-child { border-bottom: none; }
 
       .panel { padding: 1.5rem; }
     }
