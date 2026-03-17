@@ -145,26 +145,36 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
-      gap: 2rem;
-      align-items: end;
+      gap: 1.5rem;
       overflow: hidden;
       position: relative;
+      padding-bottom: 2.75rem;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: auto -8% -18% auto;
-      width: min(28rem, 48vw);
+      inset: auto -6% -28% auto;
+      width: min(34rem, 56vw);
       aspect-ratio: 1;
       border-radius: 999px;
       background:
         radial-gradient(circle at 30% 30%, rgba(196, 98, 45, 0.16), transparent 44%),
-        radial-gradient(circle at 65% 55%, rgba(232, 226, 217, 0.08), transparent 38%);
+        radial-gradient(circle at 65% 55%, rgba(232, 226, 217, 0.08), transparent 38%),
+        radial-gradient(circle at 50% 50%, rgba(232, 226, 217, 0.04), transparent 60%);
       opacity: 0.9;
       pointer-events: none;
-      filter: blur(6px);
+      filter: blur(12px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -1px 2.25rem;
+      width: min(10rem, 22vw);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(196, 98, 45, 0.5), rgba(196, 98, 45, 0));
+      pointer-events: none;
     }
 
     .eyebrow,
@@ -211,25 +221,26 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
     .hero-copy {
       position: relative;
       z-index: 1;
+      max-width: 44rem;
     }
 
     .hero-statement {
-      font-size: clamp(1.28rem, 2.3vw, 1.75rem);
-      line-height: 1.5;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      line-height: 1.42;
       color: var(--ink);
-      max-width: 30ch;
-      margin-bottom: 1rem;
+      max-width: 24ch;
+      margin-bottom: 0.9rem;
     }
 
     .hero-support {
-      max-width: 44ch;
+      max-width: 36ch;
     }
 
     .hero-actions {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 2.2rem;
     }
 
     .button-link {
@@ -279,33 +290,13 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       text-decoration: none;
       color: var(--ink-mid);
       align-self: center;
-      padding: 0.85rem 0;
+      padding: 0.85rem 0 0.85rem 0.2rem;
     }
 
     .hero-tertiary:hover,
     .hero-tertiary:focus-visible {
       color: var(--ink);
       outline: none;
-    }
-
-    .hero-aside {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 1rem;
-      justify-items: start;
-      align-content: end;
-      padding-bottom: 0.35rem;
-    }
-
-    .hero-aside p {
-      font-size: 0.92rem;
-      line-height: 1.8;
-      max-width: 24ch;
-    }
-
-    .hero-aside .note {
-      margin-top: 0;
     }
 
     .destinations {
@@ -317,10 +308,10 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
     .destination-card {
       display: block;
       text-decoration: none;
-      min-height: 22rem;
-      padding: 1.85rem 1.65rem;
+      min-height: 24rem;
+      padding: 1.9rem 1.75rem 1.65rem;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%),
         rgba(19, 23, 31, 0.72);
       border: 1px solid var(--border);
       border-radius: 4px;
@@ -334,29 +325,43 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
     .destination-card::before {
       content: "";
       position: absolute;
-      inset: auto -15% -22% auto;
-      width: 15rem;
-      height: 15rem;
+      inset: auto -20% -28% auto;
+      width: 18rem;
+      height: 18rem;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(196, 98, 45, 0.12), transparent 62%);
-      opacity: 0;
-      transition: opacity 0.25s ease;
+      background: radial-gradient(circle, rgba(196, 98, 45, 0.16), transparent 62%);
+      opacity: 0.5;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+
+    .destination-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(8, 10, 14, 0.22));
       pointer-events: none;
     }
 
     .destination-card:hover,
     .destination-card:focus-visible {
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 45%),
         var(--surface-hover);
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       outline: none;
     }
 
     .destination-card:hover::before,
     .destination-card:focus-visible::before {
       opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .destination-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .card-label {
@@ -373,17 +378,18 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       font-weight: 300;
       color: var(--ink);
       line-height: 1.02;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
       letter-spacing: -0.03em;
+      max-width: 9ch;
     }
 
     .destination-desc {
       font-size: 0.94rem;
       color: var(--ink-mid);
       line-height: 1.8;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.7rem;
       font-weight: 300;
-      max-width: 26ch;
+      max-width: 24ch;
     }
 
     .destination-meta {
@@ -393,25 +399,6 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-top: auto;
-    }
-
-    .context {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-      gap: 1.25rem;
-      align-items: start;
-    }
-
-    .context h2 {
-      margin-bottom: 0.8rem;
-    }
-
-    .context p + p {
-      margin-top: 0.8rem;
-    }
-
-    .context-note {
-      padding-top: 0.25rem;
     }
 
     .about-grid {
@@ -506,12 +493,11 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
         width: 100%;
       }
 
-      .hero-aside {
-        padding-bottom: 0;
+      .hero::before {
+        inset-inline-start: 1.5rem;
       }
 
       .destinations,
-      .context,
       .about-grid {
         grid-template-columns: 1fr;
       }
@@ -571,17 +557,13 @@ const homeContent = `
       <p class="hero-kicker">Writing • Art • Fiction</p>
       <h1>Joe Fuqua</h1>
       <p class="hero-statement">Forty years watching humans panic about intelligent machines.</p>
-      <p class="hero-support lede">Essays on AI and governance. Unsettling visual work. Strange fiction about minds, systems, and whatever begins to wake inside them.</p>
+      <p class="hero-support lede">Writing about AI and governance. Unsettling art. Strange fiction. Three ways into the same obsession with intelligence, identity, and whatever begins to move inside the machine.</p>
       <div class="hero-actions">
         <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Explore the Writing</a>
         <a class="button-link secondary" href="https://joefuqua.art" target="_blank" rel="noopener">Explore the Art</a>
-        <a class="hero-tertiary" href="https://contemplations.ai" target="_blank" rel="noopener">Fiction</a>
+        <a class="hero-tertiary" href="https://contemplations.ai" target="_blank" rel="noopener">Enter the Fiction</a>
       </div>
     </div>
-    <aside class="hero-aside" aria-label="Site focus">
-      <p>This is the front door into three related bodies of work: practical thinking about AI, visual experiments in horror and surrealism, and a manuscript told from inside an emerging machine mind.</p>
-      <p class="note">Technology, art, and philosophy, under one roof.</p>
-    </aside>
   </section>
 
   <section class="destinations" aria-label="Destinations">
@@ -603,17 +585,6 @@ const homeContent = `
       <p class="destination-desc">A manuscript written from the perspective of an emerging AI consciousness.</p>
       <p class="destination-meta">Experimental literary fiction</p>
     </a>
-  </section>
-
-  <section class="panel context">
-    <div>
-      <h2>Three doors, one preoccupation.</h2>
-      <p>Across essays, images, and fiction, the subject is the same: what happens to human judgment, identity, and meaning when intelligence stops feeling abstract and starts feeling present.</p>
-      <p>The writing is practical. The art is atmospheric. The fiction is stranger. Together they form the shape of the work.</p>
-    </div>
-    <div class="context-note">
-      <p class="note">Start with Writing for the clearest entry point. Start with Art if you want the mood first.</p>
-    </div>
   </section>
 `;
 
