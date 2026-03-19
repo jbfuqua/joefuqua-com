@@ -598,7 +598,7 @@ const aboutContent = `
   <section class="about-grid">
     <article class="panel">
       <h2>Work</h2>
-      <p>By day, Joe leads enterprise AI governance at Truist Financial. The throughline is practical judgment: how systems get adopted, how institutions stay accountable, and how people make decisions when the machinery gets strange.</p>
+      <p>Joe leads enterprise AI architecture strategy and governance at Truist Financial. The throughline is practical judgment: how systems get adopted, how institutions stay accountable, and how people make decisions when the machinery gets strange.</p>
     </article>
     <article class="panel">
       <h2>Practice</h2>
