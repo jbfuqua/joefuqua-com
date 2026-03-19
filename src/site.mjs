@@ -592,7 +592,7 @@ const aboutContent = `
   <section class="panel">
     <p class="eyebrow">About</p>
     <h1>Writing, art, and a long view of intelligent machines.</h1>
-    <p class="lede">Joe Fuqua is an enterprise AI governance leader based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
+    <p class="lede">Joe Fuqua is an enterprise AI strategy and governance leader based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
   </section>
 
   <section class="about-grid">
