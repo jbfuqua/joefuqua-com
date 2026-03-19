@@ -18,16 +18,12 @@ export async function buildSite({ cleanOnly = false } = {}) {
   await mkdir(distDir, { recursive: true });
 
   for (const page of pages) {
-    const targets = [rootDir, distDir];
-
-    for (const targetRoot of targets) {
-      const outputPath = path.join(targetRoot, page.route);
-      await mkdir(path.dirname(outputPath), { recursive: true });
-      await writeFile(outputPath, page.html);
-    }
+    const outputPath = path.join(distDir, page.route);
+    await mkdir(path.dirname(outputPath), { recursive: true });
+    await writeFile(outputPath, page.html);
   }
 
-  console.log(`Built ${pages.length} pages to root and dist/`);
+  console.log(`Built ${pages.length} pages to dist/`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
