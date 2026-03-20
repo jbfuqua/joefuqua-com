@@ -592,13 +592,13 @@ const aboutContent = `
   <section class="panel">
     <p class="eyebrow">About</p>
     <h1>Writing, art, and a long view of intelligent machines.</h1>
-    <p class="lede">Joe Fuqua is an enterprise AI strategy and governance leader based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
+    <p class="lede">Joe Fuqua is a leader in intelligent automation architecture strategy and governance based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
   </section>
 
   <section class="about-grid">
     <article class="panel">
       <h2>Work</h2>
-      <p>Joe leads enterprise AI architecture strategy and governance at Truist Financial. The throughline is practical judgment: how systems get adopted, how institutions stay accountable, and how people make decisions when the machinery gets strange.</p>
+      <p>Joe leads intelligent automation architecture strategy and governance at Truist Financial. The throughline is practical judgment: how systems get adopted, how institutions stay accountable, and how people make decisions when the machinery gets strange.</p>
     </article>
     <article class="panel">
       <h2>Practice</h2>
