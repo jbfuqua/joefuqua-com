@@ -24,6 +24,12 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <link rel="canonical" href="${canonical}" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="Writing, art, and a long view of intelligent machines. Panic is optional. Preparation isn't." />
+  <meta property="og:image" content="https://joefuqua.com/og-default.png" />
+  <meta property="og:url" content="${canonical}" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -554,7 +560,7 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
 const homeContent = `
   <section class="panel hero">
     <div class="hero-copy">
-      <p class="hero-kicker">Writing • Art • Fiction</p>
+      <p class="hero-kicker">Writing, art, and a long view of intelligent machines.</p>
       <h1>Joe Fuqua</h1>
       <p class="hero-statement">Forty years watching humans panic about intelligent machines.</p>
       <p class="hero-support lede">Writing about AI and governance. Unsettling art. Strange fiction. Three ways into the same obsession with intelligence, identity, and whatever begins to move inside the machine.</p>
@@ -591,7 +597,7 @@ const homeContent = `
 const aboutContent = `
   <section class="panel">
     <p class="eyebrow">About</p>
-    <h1>Writing, art, and a long view of intelligent machines.</h1>
+    <h1>Still here. Still building. Still writing.</h1>
     <p class="lede">Joe Fuqua is a leader in intelligent automation architecture strategy and governance based in Charlotte, North Carolina. This site is the front door to the wider ecosystem: essays and newsletter work on joefuqua.blog, visual work on joefuqua.art, and selected experiments elsewhere.</p>
   </section>
 
