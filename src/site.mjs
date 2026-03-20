@@ -26,7 +26,7 @@ const pageShell = ({ title, description, canonical, activeKey, bodyClass = "", c
   <link rel="canonical" href="${canonical}" />
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="Writing, art, and a long view of intelligent machines. Panic is optional. Preparation isn't." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/jbfuqua/joefuqua-com/main/src/og-default.png" />
+  <meta property="og:image" content="https://joefuqua.com/og-default.png" />
   <meta property="og:url" content="${canonical}" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
