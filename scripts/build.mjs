@@ -2,6 +2,7 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pages } from "../src/site.mjs";
+import { generateOgImage } from "./og-image.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -22,6 +23,8 @@ export async function buildSite({ cleanOnly = false } = {}) {
     await mkdir(path.dirname(outputPath), { recursive: true });
     await writeFile(outputPath, page.html);
   }
+
+  await generateOgImage(distDir);
 
   console.log(`Built ${pages.length} pages to dist/`);
 }
