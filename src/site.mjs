@@ -562,7 +562,7 @@ const homeContent = `
     <div class="hero-copy">
       <p class="hero-kicker">Writing, art, and a long view of intelligent machines.</p>
       <h1>Joe Fuqua</h1>
-      <p class="hero-statement">Forty years watching humans panic about intelligent machines.</p>
+      <p class="hero-statement">Writing, art, and a long view of intelligent machines.</p>
       <p class="hero-support lede">Writing about AI and governance. Unsettling art. Strange fiction. Three ways into the same obsession with intelligence, identity, and whatever begins to move inside the machine.</p>
       <div class="hero-actions">
         <a class="button-link primary" href="https://joefuqua.blog" target="_blank" rel="noopener">Explore the Writing</a>
