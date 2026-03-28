@@ -1,6 +1,7 @@
 const socialLinks = [
-  { href: "https://linkedin.com/in/joefuqua", label: "LinkedIn" },
-  { href: "https://instagram.com/a.nod.tothe.odd", label: "Instagram" }
+  { href: "https://linkedin.com/in/joe-fuqua", label: "LinkedIn" },
+  { href: "https://instagram.com/the.dim.edge", label: "@the.dim.edge" },
+  { href: "https://instagram.com/a.nod.tothe.odd", label: "@a.nod.tothe.odd" }
 ];
 
 const ecosystemLinks = [
